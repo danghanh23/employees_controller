@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<base target="_top">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>会社員</title>  
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: "Open Sans";
+			color: #000;
+		}
+
+		section {
+            //background: url("xxxxxxxxxxx"); //url background image
+			height: 100vh;
+			width: 100%;
+			background-size: cover;
+			background-position: center center;
+		}
+
+		.form-container {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 380px;
+			padding: 50px 30px;
+			border-radius: 10px;
+			box-shadow: 7px 7px 60px #000;
+		}
+
+		h1 {
+			color: #000;
+			font-size: 2em;
+			text-transform: uppercase;
+			text-align: center;
+			margin-bottom: 2rem;
+		}
+
+		.control input {
+			font-size: 16px;
+			display: block;
+			width: 100%;
+			color: #000;
+			background: #ddd;
+			outline: none;
+			border: none;
+			margin: 1em 0;
+			border-radius: 30px;
+			padding: 15px;
+
+		}
+
+		.control .btn {
+			color: #fff;
+			text-transform: uppercase;
+			background: blue;
+			opacity: .7;
+			transition: opacity .3s ease;
+		}
+
+		.btn:focus {
+			opacity: 1;
+		}
+
+		p {
+			text-align: center;
+		}
+
+		a {
+			text-decoration: none;
+			color: #000;
+			opacity: .7;
+		}
+
+		a:hover {
+			opacity: 1;
+		}
+
+		
+	</style>
+</head>
+
+<body>
+	<section>
+		<div class="form-container">
+			<div class="page1_class1" id="page1_id1">
+				<h1>会社員</h1>
+
+				<div class="control">
+					<label for="username">部署</label>
+					<input type="text" id="office" >
+            </div>
+					<div class="control">
+						<label for="psw">氏名</label>
+						<input type="text" id="username" >
+            </div>
+						<br>
+						<div class="control">
+							<input type="button" class="btn" value="検索" onclick="showListPage()">
+              <?var url = getUrl();?><input type="hidden" value="<?= url ?>" id="url" />
+							<span id="errorMessage" style="color: red" ></span>
+						</div>
+					</div>
+	</section>
+
+  	<script>
+          function showListPage()
+          {
+            var office = document.getElementById("office").value;
+            var username = document.getElementById("username").value;
+                
+            var url = document.getElementById("url").value;
+            var link = document.createElement('a');
+            link.href = url+"?office="+office+"&username="+username+"&page=Link 1";
+            link.id = 'linkURL';
+            document.body.appendChild(link);
+            document.getElementById("linkURL").click();        
+
+          }
+	</script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <title>Bootstrap 4 Website Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  
+  <script>
+
+    
+  function Back()
+  {  
+    var url = document.getElementById("url").value;
+    var link = document.createElement('a');
+    link.href = url+"?page=Index&message=Back From Link 2";
+    link.id = 'linkURL';
+    document.body.appendChild(link);
+    document.getElementById("linkURL").click();  
+  }
+  </script>  
+
+    <style>
+	.green-text {
+		color: #8CC84B; /* Mã màu xanh lá chuối */
+		font-weight: bold;
+	  }
+
+	  .title-name{
+		background-color: #D3D3D3;
+		display: flex;
+	  }
+
+	  .title2{
+		max-width: 100%;
+		width: 100%;
+	  }
+
+	  
+	  .cus-h2{
+		height: 40%;
+		background-color: #8CC84B;
+		display: flex;
+		align-items: center;
+	  }
+	 
+
+	  .cus-h5{
+		height: 60%;
+		background-color: #D3D3D3;
+		display: flex;
+		align-items: center;
+	  }
+	 
+
+	  h2 {
+		color: white; 
+		padding: 0;
+		margin: 0;
+		font-size: 29px;
+		padding-left: 10px;
+	  }
+	  
+	  h5 {
+		margin: 0;
+ 		 padding: 0;
+		  font-size: 60px;
+		  padding-left: 10px;
+	  }
+
+
+    .loading-container {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .loading-circle {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #3498db;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin: auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+  </style>
+
+  </head>
+   <body>
+
+<div class="loading-container" id="loadingContainer">
+  <div class="loading-circle"></div>
+</div>
+
+<div id="content">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#"></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"></a>
+      </li>    
+    </ul>
+  </div>  
+</nav>
+
+
+<div class="container" style="margin-top:30px">
+  <div class="row justify-content-center">
+    <div class="col-sm-8 ">
+      <div class="title-name">
+      <img id="myImage" style="width: 60%;" alt="" />
+			  <div class="title2">
+				<div class="cus-h2">
+					<h2><?= office ?></h2>
+				</div>
+				<div class="cus-h5">
+					<h5><?= username ?></h5>
+				</div>
+			  </div>
+		</div>
+
+
+      <div class="green-text">Q1.</div>
+      <div id="q1"></div>
+      <div class="green-text">Q2.</div>
+      <div id="q2"></div>
+      <div class="green-text">Q3.</div>
+      <div id="q3"></div>
+      <div class="green-text">Q4.</div>
+
+      <div id="q4"></div>
+      <div class="green-text">Q5.</div>
+      <div id="q5"></div>
+      <div class="green-text">Q6.</div>
+      <div id="q6"></div>
+      <div class="green-text">Q7.</div>
+      <div id="q7"></div>
+	  </div>
+  </div>
+</div>
+</div>
+
+
+    
+<script>
+   document.getElementById('loadingContainer').style.display = 'block';
+    document.getElementById('content').style.display = 'none';
+    var office = "<?!= office ?>";
+    var username = "<?!= username ?>";
+    
+    google.script.run.withSuccessHandler(setInfo).findUser(office, username);
+   
+    
+     function setInfo(user) {
+      console.log("user: " + user);
+      var q1 = document.getElementById("q1");
+      q1.textContent = user.q1;
+
+      var q2 = document.getElementById("q2");
+      q2.textContent = user.q2;
+
+      var q3 = document.getElementById("q3");
+      q3.textContent = user.q3;
+
+      var q2 = document.getElementById("q2");
+      q2.textContent = user.q2;
+      
+      var q4 = document.getElementById("q4");
+      q4.textContent = user.q4;
+
+      var q5 = document.getElementById("q5");
+      q5.textContent = user.q5;
+
+      var q6 = document.getElementById("q6");
+      q6.textContent = user.q6;
+
+      var q7 = document.getElementById("q7");
+      q7.textContent = user.q7;
+
+      console.log(user.image);
+
+      var myImage = document.getElementById('myImage');
+      myImage.src = user.image ;
+  document.getElementById('loadingContainer').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+
+      };
+
+  
+  </script>
+
+
+
+   </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
